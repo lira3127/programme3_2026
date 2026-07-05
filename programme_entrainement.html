@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programme 13 semaines — 6 juillet → 5 octobre</title>
+<style>
+
+  :root{
+    --vert: #B7E4C7;
+    --corail: #FF7F7F;
+    --mandarine: #FFA552;
+    --creme: #FFFDF8;
+    --gris: #404040;
+    --vert-fonce: #6FB98F;
+    --ombre: 0 10px 25px rgba(64,64,64,0.08);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--creme);
+    color: var(--gris);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.55;
+  }
+
+  h1,h2,h3,h4{
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* HERO */
+  .hero{
+    background: linear-gradient(135deg, var(--vert) 0%, #d7f0e0 45%, var(--mandarine) 130%);
+    padding: 70px 20px 90px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after{
+    content:"☀️";
+    position:absolute;
+    font-size: 140px;
+    opacity: 0.18;
+    top: -30px;
+    right: -10px;
+  }
+  .hero .eyebrow{
+    display:inline-block;
+    background: var(--creme);
+    color: var(--corail);
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    box-shadow: var(--ombre);
+    margin-bottom: 18px;
+  }
+  .hero h1{
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--gris);
+    max-width: 720px;
+  }
+  .hero p{
+    max-width: 620px;
+    font-size: 1.1rem;
+    margin-top: 14px;
+    color: #333;
+  }
+  .hero .dates{
+    margin-top: 26px;
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .pill{
+    background: var(--creme);
+    border-radius: 14px;
+    padding: 10px 18px;
+    font-weight: 700;
+    box-shadow: var(--ombre);
+    font-size: 0.95rem;
+  }
+
+  /* NAV */
+  .nav{
+    position: sticky;
+    top:0;
+    z-index: 50;
+    background: var(--creme);
+    border-bottom: 2px solid var(--vert);
+    padding: 10px 0;
+  }
+  .nav .wrap{
+    display:flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content:center;
+  }
+  .nav a{
+    text-decoration:none;
+    font-weight:700;
+    font-size:0.85rem;
+    background: var(--vert);
+    color: var(--gris);
+    padding: 7px 14px;
+    border-radius: 999px;
+    transition: 0.2s;
+    white-space: nowrap;
+  }
+  .nav a:hover{ background: var(--mandarine); color: white; }
+
+  section{ padding: 56px 0; }
+  section h2{
+    font-size: 1.9rem;
+    color: var(--gris);
+    border-left: 8px solid var(--corail);
+    padding-left: 16px;
+    margin-bottom: 8px;
+  }
+  section .soustitre{
+    color:#666;
+    margin-bottom: 30px;
+    max-width: 700px;
+  }
+
+  /* CARTES GENERIQUES */
+  .carte{
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--ombre);
+    padding: 24px 26px;
+    margin-bottom: 20px;
+  }
+
+  /* MACROCYCLE */
+  .grille-blocs{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+    gap: 16px;
+  }
+  .bloc-carte{
+    background: white;
+    border-radius: 18px;
+    box-shadow: var(--ombre);
+    padding: 20px;
+    border-top: 6px solid var(--vert-fonce);
+  }
+  .bloc-carte.deload{ border-top-color: var(--corail); }
+  .bloc-carte .num{
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--vert-fonce);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .bloc-carte.deload .num{ color: var(--corail); }
+  .bloc-carte h3{ font-size: 1.1rem; margin: 6px 0 4px; }
+  .bloc-carte .semaines{ font-size: 0.85rem; color:#777; margin-bottom:8px; }
+  .bloc-carte .fatigue{
+    display:inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--vert);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+
+  table.rpe{
+    width:100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  table.rpe th, table.rpe td{
+    padding: 8px 10px;
+    text-align:left;
+    border-bottom: 1px solid #eee;
+  }
+  table.rpe th{ background: var(--vert); color: var(--gris); }
+  table.rpe tr:last-child td{ border-bottom:none; }
+
+  /* SEANCE HEADER */
+  .seance-header{
+    background: var(--gris);
+    color: var(--creme);
+    border-radius: 22px;
+    padding: 28px 30px;
+    margin-bottom: 26px;
+    position: relative;
+    overflow:hidden;
+  }
+  .seance-header .emoji-fond{
+    position:absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 5rem;
+    opacity: 0.18;
+  }
+  .seance-header .tag{
+    display:inline-block;
+    background: var(--mandarine);
+    color: white;
+    font-weight:800;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .seance-header h3{ font-size: 1.5rem; color: white; }
+  .seance-header .objectifs{
+    margin-top: 12px;
+    font-size: 0.92rem;
+    color: #d8d8d8;
+    max-width: 640px;
+  }
+  .seance-header .duree{
+    margin-top: 14px;
+    font-weight: 700;
+    color: var(--vert);
+    font-size: 0.9rem;
+  }
+
+  .ajustement-note{
+    background: #FFF3E0;
+    border-left: 5px solid var(--mandarine);
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+  }
+  .ajustement-note strong{ color: #b5590a; }
+
+  /* EXERCICE CARD */
+  .exo-carte{
+    background: white;
+    border-radius: 18px;
+    box-shadow: var(--ombre);
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    border-left: 6px solid var(--vert-fonce);
+  }
+  .exo-carte.pliometrie{ border-left-color: var(--mandarine); }
+  .exo-carte.echauffement{ border-left-color: var(--corail); }
+  .exo-carte .exo-titre{
+    display:flex;
+    justify-content: space-between;
+    align-items:flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .exo-carte .exo-titre h4{
+    font-size: 1.15rem;
+    color: var(--gris);
+  }
+  .exo-carte .num-badge{
+    display:inline-block;
+    background: var(--vert);
+    border-radius: 8px;
+    padding: 2px 9px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin-right: 8px;
+  }
+  .exo-carte.pliometrie .num-badge{ background: var(--mandarine); color:white; }
+
+  .stat-ligne{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .stat{
+    background: var(--creme);
+    border: 2px solid var(--vert);
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    display:flex;
+    align-items:center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .stat.repos{ border-color: var(--corail); }
+  .stat.rpe{ border-color: var(--mandarine); }
+  .stat.tempo{ border-color: #999; }
+
+  .consignes{
+    margin-top: 12px;
+    font-size: 0.87rem;
+    color: #555;
+  }
+  .consignes ul{ margin: 6px 0 0 18px; padding:0; }
+  .variante{
+    margin-top: 8px;
+    font-size: 0.83rem;
+    color: #777;
+    font-style: italic;
+  }
+
+  /* TABLEAU PROGRESSION PLIO */
+  .progression-plio{
+    margin-top: 10px;
+    overflow-x:auto;
+  }
+  table.plio{
+    width:100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    min-width: 640px;
+  }
+  table.plio th, table.plio td{
+    border: 1px solid #eee;
+    padding: 7px 8px;
+    text-align:center;
+  }
+  table.plio th{ background: var(--mandarine); color:white; }
+  table.plio td.semaine{ font-weight:800; background: var(--creme); }
+  table.plio tr.deload td{ background:#FFF3E0; }
+  table.plio td.total{ font-weight: 800; color: var(--vert-fonce); }
+  table.plio td.ecart{ font-size: 0.75rem; color:#999; }
+
+  .bloc-titre{
+    font-weight: 800;
+    color: var(--corail);
+    margin: 26px 0 12px;
+    font-size: 1.05rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .duree-recap{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .duree-recap .item{
+    background: var(--vert);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .duree-recap .item span{
+    display:block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color:#444;
+  }
+
+  footer{
+    background: var(--gris);
+    color: var(--creme);
+    text-align:center;
+    padding: 34px 20px;
+    font-size: 0.85rem;
+  }
+  footer .em{ font-size: 1.6rem; margin-bottom: 8px; }
+
+  @media (max-width: 600px){
+    .hero{ padding: 50px 16px 70px; }
+    section{ padding: 40px 0; }
+    .seance-header{ padding: 22px; }
+  }
+
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">🏋️ Programme personnalisé — 13 semaines</span>
+      <h1>Force, explosivité &amp; abdos en béton pour l'été 🌞</h1>
+      <p>Un macrocycle complet en 5 blocs, construit sur l'autorégulation par RPE, pensé pour développer en priorité les abdominaux, les biceps et les triceps, tout en boostant ta pliométrie pour la course à pied.</p>
+      <div class="dates">
+        <span class="pill">📅 6 juillet → 5 octobre</span>
+        <span class="pill">🔥 5 séances / cycle</span>
+        <span class="pill">⏱️ 1h15 à 1h45 / séance</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a href="#macrocycle">🗓️ Macrocycle</a>
+      <a href="#seance1">🍑 Séance 1</a>
+      <a href="#seance2">💪 Séance 2</a>
+      <a href="#seance3">🏋️ Séance 3</a>
+      <a href="#seance4">🚀 Séance 4</a>
+      <a href="#seance5">🧘 Séance 5</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- MACROCYCLE -->
+    <section id="macrocycle">
+      <h2>Organisation du macrocycle</h2>
+      <p class="soustitre">Le programme est organisé en <strong>5 phases</strong> réparties sur 13 semaines : accumulation, intensification, deload, reprise avec charges supérieures, puis intensification finale.</p>
+
+      <div class="grille-blocs">
+        <div class="bloc-carte">
+          <div class="num">Bloc 1</div>
+          <h3>Accumulation</h3>
+          <div class="semaines">Semaines 1 à 3</div>
+          <p style="font-size:0.85rem; margin:0 0 10px;">Construction de la technique et accumulation de volume.</p>
+          <span class="fatigue">Fatigue faible → modérée</span>
+        </div>
+        <div class="bloc-carte">
+          <div class="num">Bloc 2</div>
+          <h3>Intensification</h3>
+          <div class="semaines">Semaines 4 à 6</div>
+          <p style="font-size:0.85rem; margin:0 0 10px;">Intensification progressive des charges et du RPE.</p>
+          <span class="fatigue">Fatigue modérée → élevée</span>
+        </div>
+        <div class="bloc-carte deload">
+          <div class="num">Bloc 3</div>
+          <h3>Deload 🧘</h3>
+          <div class="semaines">Semaine 7</div>
+          <p style="font-size:0.85rem; margin:0 0 10px;">Volume −50 %, charges −10 à −15 %, RPE 6.</p>
+          <span class="fatigue">Fatigue très faible</span>
+        </div>
+        <div class="bloc-carte">
+          <div class="num">Bloc 4</div>
+          <h3>Reprise</h3>
+          <div class="semaines">Semaines 8 à 10</div>
+          <p style="font-size:0.85rem; margin:0 0 10px;">Reprise avec charges supérieures à celles du bloc 2.</p>
+          <span class="fatigue">Fatigue modérée</span>
+        </div>
+        <div class="bloc-carte">
+          <div class="num">Bloc 5</div>
+          <h3>Intensification finale</h3>
+          <div class="semaines">Semaines 11 à 13</div>
+          <p style="font-size:0.85rem; margin:0 0 10px;">Semaine 12 la plus productive, semaine 13 en consolidation des acquis.</p>
+          <span class="fatigue">Fatigue élevée mais contrôlée</span>
+        </div>
+      </div>
+
+      <div class="carte" style="margin-top:24px;">
+        <h3 style="font-size:1.1rem; margin-bottom:10px;">🔥 Échelle RPE utilisée sur tout le cycle</h3>
+        <table class="rpe">
+          <tr><th>RPE</th><th>Signification</th></tr>
+          <tr><td>6</td><td>Facile</td></tr>
+          <tr><td>7</td><td>Environ 3 répétitions en réserve</td></tr>
+          <tr><td>8</td><td>Environ 2 répétitions en réserve</td></tr>
+          <tr><td>9</td><td>Environ 1 répétition en réserve</td></tr>
+          <tr><td>10</td><td>Échec musculaire</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- SEANCE 1 -->
+    <section id="seance1">
+      <div class="seance-header">
+        <span class="emoji-fond">🍑</span>
+        <span class="tag">Séance 1</span>
+        <h3>Jambes — Chaîne postérieure &amp; Abdominaux</h3>
+        <p class="objectifs">Développer les ischio-jambiers et les fessiers, renforcer les mollets, prévenir les blessures (tibial, adducteurs), développer les abdominaux, tout en limitant la fatigue des quadriceps pour préserver la séance 4.</p>
+        <div class="duree">⏱️ Durée estimée : 1h25 à 1h35</div>
+      </div>
+
+      <div class="ajustement-note">
+        <strong>Ajustement validé ✅</strong> — L'ordre a été réorganisé : Romanian Deadlift → Hip Thrust → Leg Curl (au lieu de RDL → Leg Curl → Hip Thrust dans la version initiale).
+      </div>
+
+      <div class="bloc-titre">🌞 Échauffement (10–12 min)</div>
+      <div class="exo-carte echauffement">
+        <div class="exo-titre"><h4>Activation cardio + mobilité + activation</h4></div>
+        <div class="consignes">Vélo/rameur léger 3 min · Cercles de chevilles, ouvertures de hanches, leg swings, World's Greatest Stretch · Hip Bridge 2×10, marche latérale mini-band 2×12 pas, Bodyweight RDL 2×8.</div>
+      </div>
+
+      <div class="bloc-titre">🏋️ Bloc principal</div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">1</span>Romanian Deadlift</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Objectif : ischio-jambiers + fessiers</p>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 6–8 répétitions</span>
+          <span class="stat rpe">🔥 RPE 7–8</span>
+          <span class="stat repos">⏱️ Repos 2 min 30</span>
+          <span class="stat tempo">🎯 Tempo 2–0–1</span>
+        </div>
+        <div class="consignes">Dos neutre, barre proche des jambes, charnière de hanches, léger fléchissement des genoux, étirement marqué des ischios sans perdre la position du dos.</div>
+        <div class="variante">Variante : haltères, Trap Bar RDL</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">2</span>Hip Thrust</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 8–10 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 2 min</span>
+          <span class="stat tempo">🎯 Tempo 2–1–1</span>
+        </div>
+        <div class="consignes">Menton rentré, rétroversion du bassin en haut, pause d'une seconde en contraction, tibias verticaux au sommet.</div>
+        <div class="variante">Variante : Hip Thrust Smith Machine, Glute Bridge barre</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">3</span>Leg Curl</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 10–12 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 90 s</span>
+          <span class="stat tempo">🎯 Tempo 2–1–2</span>
+        </div>
+        <div class="consignes">Hanches collées au banc, contrôler l'excentrique, marquer une courte contraction en fin de mouvement.</div>
+        <div class="variante">Variante : Leg Curl assis, Nordic Curl assisté</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">4</span>Mollets debout</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 10–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8–9</span>
+          <span class="stat repos">⏱️ Repos 75 s</span>
+          <span class="stat tempo">🎯 Tempo 2–1–2</span>
+        </div>
+        <div class="consignes">Amplitude complète, pause en haut, étirement complet en bas.</div>
+        <div class="variante">Variante : presse à cuisses, Smith Machine</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">5</span>Tibialis Raises</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Prévention de la périostite</p>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 15–20 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+        </div>
+        <div class="consignes">Monter le pied le plus haut possible, contrôler la descente.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">6</span>Machine adducteurs</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 2 séries</span>
+          <span class="stat">🔁 12–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+        </div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">7</span>Abducteurs penché</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 2 séries</span>
+          <span class="stat">🔁 15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+        </div>
+        <div class="variante">Variante : abducteurs incliné</div>
+      </div>
+
+      <div class="bloc-titre">🔥 Abdominaux</div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">8</span>Relevés de genoux machine</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 10–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8–9</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+        </div>
+        <div class="consignes">Enrouler le bassin en haut, éviter de balancer les jambes.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">9</span>Pallof Press</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 12 répétitions/côté</span>
+          <span class="stat rpe">🔥 RPE 7</span>
+          <span class="stat repos">⏱️ Repos 45 s</span>
+        </div>
+        <div class="consignes">Bassin fixe, bras tendus, résister à la rotation.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">10</span>Gainage</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">⏱️ 45–60 s</span>
+          <span class="stat repos">⏱️ Repos 45 s</span>
+        </div>
+      </div>
+
+      <div class="bloc-titre">🧘 Stretching (10–12 min)</div>
+      <div class="exo-carte echauffement">
+        <div class="consignes">Mollets 45 s/côté · Ischio-jambiers 45 s/côté · Fessiers (Figure 4) 45 s/côté · Fléchisseurs de hanche 45 s/côté · Adducteurs (papillon) 45 s · Bas du dos (Child's Pose) 60 s.</div>
+      </div>
+
+      <div class="duree-recap">
+        <div class="item">10–12 min<span>Échauffement</span></div>
+        <div class="item">≈ 48 min<span>Bloc principal</span></div>
+        <div class="item">18 min<span>Abdominaux</span></div>
+        <div class="item">10–12 min<span>Stretching</span></div>
+      </div>
+    </section>
+
+    <!-- SEANCE 2 -->
+    <section id="seance2">
+      <div class="seance-header">
+        <span class="emoji-fond">💪</span>
+        <span class="tag">Séance 2</span>
+        <h3>Haut du corps + Pliométrie</h3>
+        <p class="objectifs">Développer la puissance et la raideur de cheville pour la course à pied, priorité hypertrophie sur les triceps, développer les épaules et les pectoraux, limiter la fatigue pour la séance dos/biceps.</p>
+        <div class="duree">⏱️ Durée : 1h25 à 1h40</div>
+      </div>
+
+      <div class="ajustement-note">
+        <strong>Ajustement validé ✅</strong> — Ajout du Curl câble unilatéral en fin de séance (2 séries, 15 répétitions, RPE 7, repos 45 s) pour augmenter la fréquence des biceps.
+      </div>
+
+      <div class="bloc-titre">🌞 Échauffement (10 min)</div>
+      <div class="exo-carte echauffement">
+        <div class="consignes">Vélo/rameur léger 3 min · Cercles d'épaules, Band Pull Apart, rotations thoraciques, mobilité de cheville · Pompes inclinées 2×10, Face Pull élastique 2×15.</div>
+      </div>
+
+      <div class="bloc-titre">🚀 Pliométrie — progression hebdomadaire des contacts</div>
+      <p class="soustitre" style="margin-bottom:14px;">Les exercices restent identiques sur tout le cycle (Pogo Jumps, Broad Jumps, Skater Jumps), seul le volume évolue chaque semaine pour suivre la progression ciblée. Un léger écart de ±1 à 2 contacts est parfois inévitable pour garder des séries/répétitions entières — il est indiqué dans la colonne écart.</p>
+
+      <div class="exo-carte pliometrie">
+        <div class="exo-titre"><h4><span class="num-badge">A</span>Pogo Jumps</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Objectif : rigidité cheville/mollets · 3 séries fixes</p>
+        <div class="consignes">Contacts très courts, talons ne touchent presque pas le sol, buste droit. Récupération 45 s.</div>
+      </div>
+      <div class="exo-carte pliometrie">
+        <div class="exo-titre"><h4><span class="num-badge">B</span>Broad Jumps</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Objectif : puissance horizontale · 4 séries fixes</p>
+        <div class="consignes">Saut maximal, réception stable, revenir en marchant. Récupération 90 s.</div>
+      </div>
+      <div class="exo-carte pliometrie">
+        <div class="exo-titre"><h4><span class="num-badge">C</span>Skater Jumps</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Objectif : stabilité latérale · 3 séries fixes</p>
+        <div class="consignes">Réception équilibrée, contrôle du genou. Récupération 60 s.</div>
+      </div>
+
+      <div class="progression-plio">
+        <table class="plio">
+          <tr>
+            <th>Semaine</th><th>Cible contacts</th>
+            <th>Pogo Jumps<br>(séries × reps)</th>
+            <th>Broad Jumps<br>(séries × sauts)</th>
+            <th>Skater Jumps<br>(séries × reps/côté)</th>
+            <th>Total obtenu</th><th>Écart</th>
+          </tr>
+          <tr><td class="semaine">S1</td><td>45</td><td>3×3</td><td>3×3</td><td>3×4</td><td class="total">45</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S2</td><td>50</td><td>3×4</td><td>3×3</td><td>3×4</td><td class="total">51</td><td class="ecart">+1</td></tr>
+          <tr><td class="semaine">S3</td><td>55</td><td>3×4</td><td>3×3</td><td>3×5</td><td class="total">54</td><td class="ecart">−1</td></tr>
+          <tr><td class="semaine">S4</td><td>60</td><td>3×5</td><td>4×4</td><td>3×5</td><td class="total">61</td><td class="ecart">+1</td></tr>
+          <tr><td class="semaine">S5</td><td>65</td><td>3×5</td><td>4×4</td><td>3×6</td><td class="total">67</td><td class="ecart">+2</td></tr>
+          <tr><td class="semaine">S6</td><td>70</td><td>3×5</td><td>4×5</td><td>3×6</td><td class="total">71</td><td class="ecart">+1</td></tr>
+          <tr class="deload"><td class="semaine">S7 🧘</td><td>35</td><td>3×3</td><td>4×2</td><td>3×3</td><td class="total">35</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S8</td><td>60</td><td>3×4</td><td>4×3</td><td>3×6</td><td class="total">60</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S9</td><td>65</td><td>3×5</td><td>4×5</td><td>3×5</td><td class="total">65</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S10</td><td>70</td><td>3×6</td><td>4×4</td><td>3×6</td><td class="total">70</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S11</td><td>75</td><td>3×5</td><td>4×6</td><td>3×6</td><td class="total">75</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S12</td><td>80</td><td>3×6</td><td>4×5</td><td>3×7</td><td class="total">80</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S13</td><td>80</td><td>3×6</td><td>4×5</td><td>3×7</td><td class="total">80</td><td class="ecart">focus qualité</td></tr>
+        </table>
+      </div>
+
+      <div class="bloc-titre">🏋️ Bloc musculation</div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">1</span>Développé couché haltères</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 6–8 répétitions</span>
+          <span class="stat rpe">🔥 RPE 7–8</span>
+          <span class="stat repos">⏱️ Repos 2 min 30</span>
+          <span class="stat tempo">🎯 Tempo 2–0–1</span>
+        </div>
+        <div class="consignes">Omoplates serrées, pieds ancrés, amplitude complète.</div>
+        <div class="variante">Variante : développé couché barre</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">2</span>Développé incliné barre</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 8–10 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 2 min</span>
+        </div>
+        <div class="consignes">Banc à 30°, descendre sur le haut des pectoraux, ne pas cambrer excessivement.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">3</span>Développé militaire machine</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 8–10 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 90 s</span>
+        </div>
+        <div class="consignes">Amplitude complète, contrôler la descente, éviter de décoller le dos du dossier.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">4</span>Élévations latérales unilatérales</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 12–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 9</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+          <span class="stat tempo">🎯 Tempo 2–1–2</span>
+        </div>
+        <div class="consignes">Monter jusqu'à l'horizontale, coude légèrement fléchi, pas d'élan.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">5</span>Oiseau haltères sur banc</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 12–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8–9</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+        </div>
+        <div class="consignes">Poitrine collée au banc, mouvement large, contrôle complet.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">6</span>Extension triceps poulie au-dessus de la tête (dos à la poulie)</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 10–12 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8–9</span>
+          <span class="stat repos">⏱️ Repos 75 s</span>
+          <span class="stat tempo">🎯 Tempo 2–1–2</span>
+        </div>
+        <div class="consignes">Coude fixe, étirement complet, verrouiller la contraction.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">7</span>Extension triceps (barre EZ ou corde)</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 12–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 9</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+        </div>
+        <div class="consignes">Aucun mouvement des épaules, contrôle de la descente.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">8 ✅</span>Curl câble unilatéral <em style="font-size:0.75rem;color:var(--mandarine);">(ajustement)</em></h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 2 séries</span>
+          <span class="stat">🔁 15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 7</span>
+          <span class="stat repos">⏱️ Repos 45 s</span>
+        </div>
+      </div>
+
+      <div class="bloc-titre">🧘 Stretching (10–12 min)</div>
+      <div class="exo-carte echauffement">
+        <div class="consignes">Pectoraux (cadre de porte) 45 s · Deltoïdes antérieurs et postérieurs 45 s chacun · Triceps 45 s · Grand dorsal (Child Pose latéral) 45 s · Fléchisseurs du poignet 30 s.</div>
+      </div>
+    </section>
+
+    <!-- SEANCE 3 -->
+    <section id="seance3">
+      <div class="seance-header">
+        <span class="emoji-fond">🏋️</span>
+        <span class="tag">Séance 3</span>
+        <h3>Haut du corps — Dos • Biceps • Lombaires • Abdominaux</h3>
+        <div class="duree">⏱️ Durée estimée : ≈ 1h40</div>
+      </div>
+
+      <div class="ajustement-note">
+        <strong>Ajustement validé ✅</strong> — Le Russian Twist a été remplacé par le Cable Crunch, pour limiter les contraintes en rotation sur le rachis lombaire et permettre une surcharge progressive plus simple sur le grand droit de l'abdomen.
+      </div>
+
+      <div class="bloc-titre">🌞 Échauffement (10 min)</div>
+      <div class="exo-carte echauffement">
+        <div class="consignes">Rameur léger 3 min · Cat-Camel, rotations thoraciques, Band Pull Apart, Dead Hang 30 s · Scapular Pull-ups 2×10, Face Pull élastique 2×15.</div>
+      </div>
+
+      <div class="bloc-titre">🏋️ Dos</div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">1</span>Tractions (assistées si nécessaire)</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 6–10 répétitions</span>
+          <span class="stat rpe">🔥 RPE 7–8</span>
+          <span class="stat repos">⏱️ Repos 2 min 30</span>
+        </div>
+        <div class="consignes">Départ bras tendus, dépression des omoplates, monter la poitrine vers la barre, contrôler la descente.</div>
+        <div class="variante">Variante : tirage vertical prise neutre</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">2</span>Rowing barre</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 8–10 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 2 min</span>
+          <span class="stat tempo">🎯 Tempo 2–0–1</span>
+        </div>
+        <div class="consignes">Dos neutre, tirer les coudes vers les hanches, éviter l'élan.</div>
+        <div class="variante">Variante : Rowing T-Bar</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">3</span>Tirage horizontal machine unilatéral</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 10–12 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 75 s entre les bras</span>
+        </div>
+        <div class="consignes">Étirer complètement le grand dorsal, tirer avec le coude, éviter la rotation du buste.</div>
+        <div class="variante">Variante : poulie basse unilatérale</div>
+      </div>
+
+      <div class="bloc-titre">💪 Biceps</div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">4</span>Curl incliné haltères</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 8–10 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 90 s</span>
+          <span class="stat tempo">🎯 Tempo 3–1–1</span>
+        </div>
+        <div class="consignes">Épaules en arrière, ne pas avancer les coudes, étirement maximal.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">5</span>Curl pupitre (EZ ou machine) 👍</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 10–12 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8–9</span>
+          <span class="stat repos">⏱️ Repos 75 s</span>
+        </div>
+        <div class="consignes">Excellente stabilité, forte tension sur le biceps.</div>
+        <div class="variante">Variante : Spider Curl</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">6</span>Curl marteau à la corde</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Travail du brachial et du brachio-radial</p>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 12–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 9</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+        </div>
+        <div class="consignes">Prise neutre, monter sans élan, contrôle de la descente.</div>
+      </div>
+
+      <div class="bloc-titre">🔥 Lombaires &amp; Abdominaux</div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">7</span>Extensions lombaires</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 12–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 75 s</span>
+        </div>
+        <div class="consignes">Monter jusqu'à l'alignement, pas d'hyperextension, contracter les fessiers.</div>
+        <div class="variante">Variante : Reverse Hyper, Bird Dog lesté</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">8</span>Relevés de genoux machine</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 12–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8–9</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+        </div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">9 ✅</span>Cable Crunch <em style="font-size:0.75rem;color:var(--mandarine);">(remplace le Russian Twist)</em></h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 20 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 45 s</span>
+        </div>
+        <div class="consignes">Rachis en flexion contrôlée, enrouler le buste vers le bassin, éviter de tirer avec les bras.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">10</span>Gainage latéral</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">⏱️ 30–45 s/côté</span>
+          <span class="stat repos">⏱️ Repos 30 s</span>
+        </div>
+        <div class="consignes">Progression : quand 45 s deviennent faciles sur toutes les séries, ajouter un lest léger ou lever la jambe supérieure.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">11</span>Rappel triceps (optimisation)</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Extension triceps corde</p>
+        <div class="stat-ligne">
+          <span class="stat">🔢 2 séries</span>
+          <span class="stat">🔁 15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 7</span>
+          <span class="stat repos">⏱️ Repos 45 s</span>
+        </div>
+      </div>
+
+      <div class="bloc-titre">🧘 Stretching (10–12 min)</div>
+      <div class="exo-carte echauffement">
+        <div class="consignes">Grand dorsal (suspension ou Child Pose latéral) 45 s · Rhomboïdes 45 s · Biceps 45 s · Lombaires (Child Pose) 60 s · Abdominaux (Cobra) 30 s · Avant-bras 30 s.</div>
+      </div>
+    </section>
+
+    <!-- SEANCE 4 -->
+    <section id="seance4">
+      <div class="seance-header">
+        <span class="emoji-fond">🚀</span>
+        <span class="tag">Séance 4</span>
+        <h3>Jambes + Pliométrie</h3>
+        <p class="objectifs">Améliorer la puissance et l'économie de course, développer les quadriceps, renforcer les fessiers, les mollets et le tibial antérieur, tout en limitant la fatigue excessive des ischio-jambiers déjà sollicités en séance 1.</p>
+        <div class="duree">⏱️ Durée : 1h30 à 1h40</div>
+      </div>
+
+      <div class="ajustement-note">
+        <strong>Ajustement validé ✅</strong> — Ajout du Pallof Press en fin de séance (2 séries, 15 répétitions, RPE 7, repos 45 s), pour une troisième stimulation hebdomadaire des abdominaux sans allonger significativement la séance.
+      </div>
+
+      <div class="bloc-titre">🌞 Échauffement (10–12 min)</div>
+      <div class="exo-carte echauffement">
+        <div class="consignes">Vélo léger ou corde à sauter douce 3 min · Mobilité cheville, leg swings, World's Greatest Stretch, squat profond assisté 30 s · Mini-band latérale 2×10 pas, squat poids du corps 2×10, montées sur pointes 2×15.</div>
+      </div>
+
+      <div class="bloc-titre">🚀 Pliométrie — progression hebdomadaire des contacts</div>
+      <p class="soustitre" style="margin-bottom:14px;">Exercices fixes (Tuck Jumps, Single-Leg Bounds, Bounds), volume évolutif chaque semaine. Écart maximal accepté : ±2 contacts, indiqué dans le tableau.</p>
+
+      <div class="exo-carte pliometrie">
+        <div class="exo-titre"><h4><span class="num-badge">A</span>Tuck Jumps</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Objectif : puissance verticale · 3 séries fixes</p>
+        <div class="consignes">Monter les genoux rapidement, atterrir en douceur, garder un tronc gainé. Récupération 90 s.</div>
+      </div>
+      <div class="exo-carte pliometrie">
+        <div class="exo-titre"><h4><span class="num-badge">B</span>Single-Leg Bounds</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Objectif : puissance unilatérale · 3 séries fixes</p>
+        <div class="consignes">Bond long et explosif, stabiliser la réception, contrôle du genou. Récupération 90 à 120 s.</div>
+      </div>
+      <div class="exo-carte pliometrie">
+        <div class="exo-titre"><h4><span class="num-badge">C</span>Bounds</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Objectif : économie de course · 3 séries fixes, 20 m</p>
+        <div class="consignes">Grande amplitude, contacts au sol courts, utiliser les bras. Récupération 90 s.</div>
+      </div>
+
+      <div class="progression-plio">
+        <table class="plio">
+          <tr>
+            <th>Semaine</th><th>Cible contacts</th>
+            <th>Tuck Jumps<br>(séries × sauts)</th>
+            <th>Single-Leg Bounds<br>(séries × bonds/jambe)</th>
+            <th>Bounds<br>(séries × contacts)</th>
+            <th>Total obtenu</th><th>Écart</th>
+          </tr>
+          <tr><td class="semaine">S1</td><td>45</td><td>3×3</td><td>3×3</td><td>3×6</td><td class="total">45</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S2</td><td>50</td><td>3×4</td><td>3×3</td><td>3×7</td><td class="total">51</td><td class="ecart">+1</td></tr>
+          <tr><td class="semaine">S3</td><td>55</td><td>3×4</td><td>3×4</td><td>3×6</td><td class="total">54</td><td class="ecart">−1</td></tr>
+          <tr><td class="semaine">S4</td><td>60</td><td>3×4</td><td>3×4</td><td>3×8</td><td class="total">60</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S5</td><td>65</td><td>3×5</td><td>3×4</td><td>3×9</td><td class="total">66</td><td class="ecart">+1</td></tr>
+          <tr><td class="semaine">S6</td><td>70</td><td>3×5</td><td>3×5</td><td>3×9</td><td class="total">72</td><td class="ecart">+2</td></tr>
+          <tr class="deload"><td class="semaine">S7 🧘</td><td>35</td><td>3×3</td><td>3×2</td><td>3×4</td><td class="total">33</td><td class="ecart">−2</td></tr>
+          <tr><td class="semaine">S8</td><td>60</td><td>3×4</td><td>3×4</td><td>3×8</td><td class="total">60</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S9</td><td>65</td><td>3×5</td><td>3×4</td><td>3×9</td><td class="total">66</td><td class="ecart">+1</td></tr>
+          <tr><td class="semaine">S10</td><td>70</td><td>3×5</td><td>3×5</td><td>3×9</td><td class="total">72</td><td class="ecart">+2</td></tr>
+          <tr><td class="semaine">S11</td><td>75</td><td>3×5</td><td>3×5</td><td>3×10</td><td class="total">75</td><td class="ecart">exact</td></tr>
+          <tr><td class="semaine">S12</td><td>80</td><td>3×6</td><td>3×6</td><td>3×9</td><td class="total">81</td><td class="ecart">+1</td></tr>
+          <tr><td class="semaine">S13</td><td>80</td><td>3×6</td><td>3×6</td><td>3×9</td><td class="total">81</td><td class="ecart">focus qualité</td></tr>
+        </table>
+      </div>
+
+      <div class="bloc-titre">🏋️ Bloc musculation</div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">1</span>Squat Smith Machine</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 6–8 répétitions</span>
+          <span class="stat rpe">🔥 RPE 7–8</span>
+          <span class="stat repos">⏱️ Repos 2 min 30</span>
+          <span class="stat tempo">🎯 Tempo 2–1–1</span>
+        </div>
+        <div class="consignes">Pieds légèrement en avant, descendre au moins jusqu'à la parallèle, genoux dans l'axe des pieds, pousser fort dès le bas.</div>
+        <div class="variante">Variante : Hack Squat, Front Squat</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">2</span>Leg Press</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 10–12 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 2 min</span>
+        </div>
+        <div class="consignes">Amplitude complète sans décoller le bassin, contrôle de la descente, ne pas verrouiller brutalement les genoux.</div>
+        <div class="variante">Variante : Belt Squat</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">3</span>Fentes bulgares Smith Machine</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 10 répétitions/jambe</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 90 s entre les jambes</span>
+        </div>
+        <div class="consignes">Buste légèrement incliné, descente contrôlée, pousser par le talon de la jambe avant.</div>
+        <div class="variante">Variante : haltères, Split Squat</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">4</span>Leg Extension</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 2 séries</span>
+          <span class="stat">🔁 12–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 9</span>
+          <span class="stat repos">⏱️ Repos 75 s</span>
+          <span class="stat tempo">🎯 Tempo 2–1–2</span>
+        </div>
+        <div class="consignes">Marquer une pause en extension, contrôler le retour, ne pas utiliser d'élan.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">5</span>Hip Thrust</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 3 séries</span>
+          <span class="stat">🔁 10–12 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 90 s</span>
+        </div>
+        <div class="consignes">Rétroversion du bassin en haut, pause d'une seconde, contraction maximale des fessiers.</div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">6</span>Mollets assis</h4></div>
+        <p style="margin:6px 0 0; font-size:0.85rem; color:#777;">Complète les mollets debout de la séance 1 avec un accent sur le soléaire</p>
+        <div class="stat-ligne">
+          <span class="stat">🔢 4 séries</span>
+          <span class="stat">🔁 12–15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8–9</span>
+          <span class="stat repos">⏱️ Repos 60 s</span>
+          <span class="stat tempo">🎯 1s / 1s / 2s</span>
+        </div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">7</span>Tibialis Raises</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 2 séries</span>
+          <span class="stat">🔁 20 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 45 s</span>
+        </div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">8</span>Abducteurs inclinés</h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 2 séries</span>
+          <span class="stat">🔁 15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 8</span>
+          <span class="stat repos">⏱️ Repos 45 s</span>
+        </div>
+      </div>
+
+      <div class="exo-carte">
+        <div class="exo-titre"><h4><span class="num-badge">9 ✅</span>Pallof Press <em style="font-size:0.75rem;color:var(--mandarine);">(ajustement)</em></h4></div>
+        <div class="stat-ligne">
+          <span class="stat">🔢 2 séries</span>
+          <span class="stat">🔁 15 répétitions</span>
+          <span class="stat rpe">🔥 RPE 7</span>
+          <span class="stat repos">⏱️ Repos 45 s</span>
+        </div>
+      </div>
+
+      <div class="bloc-titre">🧘 Stretching (10–12 min)</div>
+      <div class="exo-carte echauffement">
+        <div class="consignes">Quadriceps 45 s/côté · Fléchisseurs de hanche 45 s/côté · Fessiers (Figure 4) 45 s/côté · Mollets 45 s/côté · Ischio-jambiers 45 s/côté · Adducteurs (papillon) 45 s · Chevilles 1 min.</div>
+      </div>
+    </section>
+
+    <!-- SEANCE 5 -->
+    <section id="seance5">
+      <div class="seance-header">
+        <span class="emoji-fond">🧘</span>
+        <span class="tag">Séance 5</span>
+        <h3>Repos actif — Mobilité, récupération &amp; prévention</h3>
+        <p class="objectifs">Améliorer la mobilité pour la musculation et la course à pied, favoriser la récupération sans générer de fatigue, prévenir les blessures, diminuer les raideurs musculaires.</p>
+        <div class="duree">⏱️ Durée totale : 25 à 30 minutes · Intensité très faible, RPE 2–3</div>
+      </div>
+
+      <div class="carte">
+        <h4 style="margin-bottom:10px;">🚴 1. Mise en route (3–5 min)</h4>
+        <p style="font-size:0.9rem; margin:0;">Marche rapide, vélo très léger ou rameur léger, pour augmenter légèrement la température corporelle.</p>
+      </div>
+
+      <div class="carte">
+        <h4 style="margin-bottom:10px;">🦶 2. Mobilité des chevilles (4 min)</h4>
+        <p style="font-size:0.9rem; margin:0;">Knee to Wall 2×10/jambe · Cercles de cheville 2×10 rotations chaque sens · Étirement dynamique du mollet 15 répétitions/jambe.</p>
+      </div>
+
+      <div class="carte">
+        <h4 style="margin-bottom:10px;">🍑 3. Mobilité des hanches (6 min)</h4>
+        <p style="font-size:0.9rem; margin:0;">90/90 Hip Switch 2×10 · World's Greatest Stretch 2×5/côté (maintenir 3 s) · Frog Stretch dynamique 10 répétitions · Hip Airplane assisté 2×6/côté.</p>
+      </div>
+
+      <div class="carte">
+        <h4 style="margin-bottom:10px;">🌬️ 4. Mobilité thoracique (4 min)</h4>
+        <p style="font-size:0.9rem; margin:0;">Open Book 2×8/côté · Rotation quadrupédie 2×8/côté · Extension thoracique sur Foam Roller 2×10.</p>
+      </div>
+
+      <div class="carte">
+        <h4 style="margin-bottom:10px;">🤸 5. Mobilité des épaules (4 min)</h4>
+        <p style="font-size:0.9rem; margin:0;">Shoulder CARs 8 rotations très lentes · Band Dislocations 2×12 · Wall Slides 2×12.</p>
+      </div>
+
+      <div class="carte">
+        <h4 style="margin-bottom:10px;">🔥 6. Gainage léger (3 min)</h4>
+        <p style="font-size:0.9rem; margin:0 0 6px;">Objectif stabilité, sans fatigue.</p>
+        <div class="stat-ligne">
+          <span class="stat">Bird Dog 2×8/côté</span>
+          <span class="stat">Dead Bug 2×8/côté</span>
+          <span class="stat rpe">Pallof Press 2×10/côté — RPE 4 max</span>
+        </div>
+      </div>
+
+      <div class="carte">
+        <h4 style="margin-bottom:10px;">🧘 7. Étirements statiques (8–10 min)</h4>
+        <p style="font-size:0.9rem; margin:0;">Mollets, ischio-jambiers, quadriceps, fessiers 45 s/côté · Fléchisseurs de hanche 60 s/côté · Adducteurs 45 s · Grand dorsal 45 s/côté · Pectoraux 45 s/côté · Triceps 30 s/côté · Avant-bras 30 s.</p>
+      </div>
+
+      <div class="carte">
+        <h4 style="margin-bottom:10px;">🌬️ Respiration (2 min)</h4>
+        <p style="font-size:0.9rem; margin:0;">Allongé sur le dos, une main sur le ventre. Inspirer 4 s, bloquer 2 s, expirer 6 s. Objectif : activer le système parasympathique pour favoriser la récupération.</p>
+      </div>
+
+      <div class="ajustement-note" style="margin-top:24px;">
+        <strong>Fréquence 📅</strong> — Obligatoire une fois par cycle (ta séance 5). En option, 10 à 15 minutes les jours de course si tu te sens particulièrement raide, en ciblant surtout les chevilles et les hanches.
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="em">🏆</div>
+    <p>Programme construit pour 13 semaines de progression — du 6 juillet au 5 octobre.<br>Technique irréprochable avant tout, la charge suit toujours la qualité d'exécution. 💪🌞</p>
+  </footer>
+
+</body>
+</html>
